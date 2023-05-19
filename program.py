@@ -91,13 +91,22 @@ t.add_value("cleo", 10)
 #     tambah_barang(jenis, jumlah)
 
 
-n = int(input("Masukkan pilihan: "))
-if n == 1:
-    x, y, z = input("Masukkan: perusahaan, nama, value: ").split(" ")
-    gabung(x, y, int(z))
-elif n == 2:
-    x, y, z = input("Masukkan: perusahaan, nama, value: ").split(" ")
-    barang_masuk(x, y, z)
+while True:
+    n = int(input("Masukkan pilihan (atau tekan 'q' untuk keluar): "))
+    if n == 1:
+        x, y, z = input("Masukkan: perusahaan, nama, value: ").split(" ")
+        gabung(x, y, int(z))
+    elif n == 2:
+        x, y, z = input("Masukkan: perusahaan, nama, value: ").split(" ")
+        barang_masuk(x, y, z)
+    elif n == 3:
+        x, y = input("Masukkan: jenis, value").split(" ")
+        barang_keluar(x, y)
+    elif n == 4:
+        t.calculate_value()
+        t.print_tree()
+    elif n.lower() == 'q':
+        break
 
 t.calculate_value()
 
