@@ -1,0 +1,99 @@
+class Tree:
+    def __init__(self, data, value=0):
+        self.data = data
+        self.value = value
+        self.children = []
+
+    def __repr__(self):
+        return self.data
+
+    def __eq__(self, other):
+        if isinstance(other, Tree):
+            return self.data == other.data
+        return False
+
+    def add_parent(self, parent_node):
+        assert isinstance(parent_node, Tree)
+        parent_node.add_child(self)
+
+    def add_child(self, child_node):
+        assert isinstance(child_node, Tree)
+        self.children.append(child_node)
+
+    def calculate_value(self):
+        if len(self.children) > 0:
+            self.value = sum(child.calculate_value()
+                             for child in self.children)
+        return self.value
+
+    def print_tree(self, level=0):
+        indent = "   " * level
+        print(f"{indent}{self.data} {self.value}")
+        for child in self.children:
+            child.print_tree(level + 1)
+
+    def add_value(self, data, value):
+        if self.data == data:
+            self.value += value
+        else:
+            for child in self.children:
+                child.add_value(data, value)
+
+
+t = Tree('*')
+samsung = Tree('samsung')
+enzo = Tree('enzo', 20)
+bastian = Tree('bastian', 14)
+samsung.add_child(enzo)
+samsung.add_child(bastian)
+t.add_child(samsung)
+
+apple = Tree('apple')
+harald = Tree('harald', value=3)
+cleo = Tree('cleo')
+apple.add_child(harald)
+apple.add_child(cleo)
+t.add_child(apple)
+
+
+t.add_value("cleo", 10)
+t.add_value("cleo", 5)
+
+t.calculate_value()
+
+t.print_tree()
+
+z = Tree('applew')
+if z in t.children:
+    print("bener")
+else:
+    x = Tree('apple')  # sama aja
+    harald = Tree('harald', value=10)
+    x.add_child(harald)
+    t.add_child(x)
+
+t.print_tree()
+# # Membuat objek tree
+# apple = Tree('apple')
+# harald = Tree('harald', value=3)
+# cleo = Tree('cleo')
+
+# # Menambahkan child ke objek tree
+# apple.add_child(harald)
+# apple.add_child(cleo)
+
+
+# t.add_child(apple)
+
+
+# t = Tree('root')
+
+# apple = Tree('apple')
+# t.add_child(apple)
+
+# a = Tree("apple")
+
+# if any(tree == a for tree in t.children):
+#     print("Benar")
+# else:
+#     print("Salah")
