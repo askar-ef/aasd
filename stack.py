@@ -28,6 +28,12 @@ class Stack:
     def size(self):
         return len(self.items)
 
+    def total(self):
+        total = 0
+        for i in self.items:
+            total += i
+        return total
+
 
 # s = Stack()
 # s.push(5)

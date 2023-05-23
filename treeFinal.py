@@ -32,6 +32,10 @@ class Tree:
         for child in self.children:
             child.print_tree(level + 1)
 
+    def print_firstchild(self):
+        for i in self.children:
+            print(i, i.value)
+
     def add_value(self, data, value):
         if self.data == data:
             self.value += value
@@ -40,60 +44,26 @@ class Tree:
                 child.add_value(data, value)
 
 
-t = Tree('*')
-samsung = Tree('samsung')
-enzo = Tree('enzo', 20)
-bastian = Tree('bastian', 14)
-samsung.add_child(enzo)
-samsung.add_child(bastian)
-t.add_child(samsung)
+# t = Tree('*')
+# samsung = Tree('samsung')
+# enzo = Tree('enzo', 20)
+# bastian = Tree('bastian', 14)
+# samsung.add_child(enzo)
+# samsung.add_child(bastian)
+# t.add_child(samsung)
 
-apple = Tree('apple')
-harald = Tree('harald', value=3)
-cleo = Tree('cleo')
-apple.add_child(harald)
-apple.add_child(cleo)
-t.add_child(apple)
-
-
-t.add_value("cleo", 10)
-t.add_value("cleo", 5)
-
-t.calculate_value()
-
-t.print_tree()
-
-z = Tree('applew')
-if z in t.children:
-    print("bener")
-else:
-    x = Tree('apple')  # sama aja
-    harald = Tree('harald', value=10)
-    x.add_child(harald)
-    t.add_child(x)
-
-t.print_tree()
-# # Membuat objek tree
 # apple = Tree('apple')
 # harald = Tree('harald', value=3)
 # cleo = Tree('cleo')
-
-# # Menambahkan child ke objek tree
 # apple.add_child(harald)
 # apple.add_child(cleo)
-
-
 # t.add_child(apple)
 
 
-# t = Tree('root')
+# t.add_value("cleo", 10)
+# t.add_value("cleo", 5)
 
-# apple = Tree('apple')
-# t.add_child(apple)
+# t.calculate_value()
 
-# a = Tree("apple")
-
-# if any(tree == a for tree in t.children):
-#     print("Benar")
-# else:
-#     print("Salah")
+# t.print_tree()
+# t.print_firstchild()

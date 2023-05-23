@@ -1,6 +1,7 @@
 class Queue:
     def __init__(self):
         self.items = []
+        self.penjualan = 0
 
     def is_empty(self):
         return len(self.items) == 0
@@ -19,6 +20,7 @@ class Queue:
             self.items.pop(0)
         else:
             self.items[0] -= value
+        self.penjualan += value
 
     def size(self):
         return len(self.items)
@@ -30,14 +32,14 @@ class Queue:
         return total
 
 
-q = Queue()
-q.enqueue(20)
-q.enqueue(30)
-q.enqueue(5)
+# q = Queue()
+# q.enqueue(20)
+# q.enqueue(30)
+# q.enqueue(5)
 
-q.dequeue(45)
+# q.dequeue(45)
 
-print(q.items)
-print(len(q.items))
+# print(q.items)
+# print(len(q.items))
 
-print(q.total())
+# print(q.total())
